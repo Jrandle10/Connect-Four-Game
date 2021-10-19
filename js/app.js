@@ -70,6 +70,7 @@ const gameMessage = document.querySelector('.game-message')
 
 const individualSquares = document.querySelectorAll('.board-child')
 
+const squares = document.querySelector('.game-board')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -82,30 +83,31 @@ init()
 function init() {
   turn = 1
   
-  boardArray = [1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+  boardArray = [1, null, null, -1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
   
   winner = null
+  
   render()
 }
 
-console.log(init())
+
 
 function render() {
-  boardArray.forEach(function(square, idx) {
-    let squareColor
-    if (boardArray === 1) {
-      squareColor = 'blue'
-    } else if (boardArray === -1) {
-      squareColor = 'red'
-    } else if (boardArray === null) {
-      squareColor = 'grey'
+let i = 0
+  for (let i = 0; i < boardArray.length; i++) {
+    if (boardArray[i] === 1) {
+      individualSquares[i].style.backgroundColor = 'red'
+    } else if (boardArray[i] === -1) {
+      individualSquares[i].style.backgroundColor = 'blue'
+    } else if (boardArray[i] === null) {
+    //  individualSquares.style.backgroundColor = 'grey'
+    console.log(individualSquares[i])
     }
-      individualSquares[idx].style.background = squareColor})
-      if (!winner) {
-        gameMessage.innerText = `It is ${turn === 1 ? 'Player one' : 'player 2'}'s turn!`
-      } else if (winner = 'Tie') {
-        gameMessage.textContent = `It's a tie!`
-      } else {
-        gameMessage.textContente = `Congratulations ${winner === 1 ? 'Player one' : 'Player two'}`
-      }
+  } if (turn === 1) {
+    gameMessage.textContent = `Player one, your turn!`
+  } else if (turn === -1) {
+    gameMessage.textContent = `Player Two, your turn`
+  }
+    
 }
+
