@@ -1,0 +1,9 @@
+.game-board {
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  height: 276px;
+  width: 330px;
+  
+
+}
