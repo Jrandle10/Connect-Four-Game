@@ -82,10 +82,10 @@ init()
 function init() {
   turn = 1
   
-  boardArray = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+  boardArray = [1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
   
   winner = null
-  
+  render()
 }
 
 console.log(init())
@@ -93,19 +93,19 @@ console.log(init())
 function render() {
   boardArray.forEach(function(square, idx) {
     let squareColor
-    if (square === 1) {
+    if (boardArray === 1) {
       squareColor = 'blue'
-    } else if (square === -1) {
+    } else if (boardArray === -1) {
       squareColor = 'red'
-    } else if (square === null) {
+    } else if (boardArray === null) {
       squareColor = 'grey'
     }
       individualSquares[idx].style.background = squareColor})
       if (!winner) {
         gameMessage.innerText = `It is ${turn === 1 ? 'Player one' : 'player 2'}'s turn!`
       } else if (winner = 'Tie') {
-        gameMessage.innerText = `It's a tie!`
+        gameMessage.textContent = `It's a tie!`
       } else {
-        gameMessage.innerText = `Congratulations ${winner === 1 ? 'Player one' : 'Player two'}`
+        gameMessage.textContente = `Congratulations ${winner === 1 ? 'Player one' : 'Player two'}`
       }
 }
