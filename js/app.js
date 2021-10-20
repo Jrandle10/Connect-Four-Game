@@ -68,17 +68,18 @@ const gameBoard = document.querySelector('.game-board')
 
 const gameMessage = document.querySelector('.game-message')
 
-const individualSquares = document.querySelectorAll('.board-child')
+let individualSquares = document.querySelectorAll('.board-child')
 
-const squares = document.querySelector('.game-board')
+
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+individualSquares.addEventListener('click', handleClick())
 
 
 /*-------------------------------- Functions --------------------------------*/
 init()
+
 
 function init() {
   turn = 1
@@ -93,21 +94,32 @@ function init() {
 
 
 function render() {
-let i = 0
-  for (let i = 0; i < boardArray.length; i++) {
-    if (boardArray[i] === 1) {
-      individualSquares[i].style.backgroundColor = 'red'
-    } else if (boardArray[i] === -1) {
-      individualSquares[i].style.backgroundColor = 'blue'
-    } else if (boardArray[i] === null) {
-    //  individualSquares.style.backgroundColor = 'grey'
-    console.log(individualSquares[i])
-    }
-  } if (turn === 1) {
-    gameMessage.textContent = `Player one, your turn!`
-  } else if (turn === -1) {
-    gameMessage.textContent = `Player Two, your turn`
-  }
+boardArray.forEach((cell, index) => {
+ let cellColor
+ if (cell === 1) {
+   cellColor = 'red'
+ } else if (cell === -1) {
+   cellColor = 'blue'
+ } else if (cell === null) {
+   cellColor = 'gray'
+ }
+//  individualSquares[index].style.backgroundColor = cellColor
+});
+  
     
+}
+
+
+function handleClick(event) {
+ let i = parseInt(event.target.id)
+ 
+if (boardArray[i] !== null) {
+  return
+}
+if (winner !== null || winner === 'T') {
+  return
+}
+
+
 }
 
