@@ -30,11 +30,11 @@
 
 
 /*-------------------------------- Constants --------------------------------*/
-console.log('this works')
+
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-let winner, turn 
+let winner, turn, T 
 let boardArray = []
 let winningCombos= [
   [0, 1, 2, 3], [41, 40, 39, 38],[7, 8, 9, 10], 
@@ -68,13 +68,15 @@ const gameBoard = document.querySelector('.game-board')
 
 const gameMessage = document.querySelector('.game-message')
 
-let individualSquares = document.querySelectorAll('.board-child')
+const individualSquares = document.querySelectorAll('.board-child')
+console.log(individualSquares)
+
 
 
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-individualSquares.addEventListener('click', handleClick())
+individualSquares.forEach(square => square.addEventListener('click', handleClick))
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -83,7 +85,7 @@ init()
 
 function init() {
   turn = 1
-  
+  gameMessage.textContent = `Player one your turn!`
   boardArray = [1, null, null, -1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
   
   winner = null
@@ -96,6 +98,7 @@ function init() {
 function render() {
 boardArray.forEach((cell, index) => {
  let cellColor
+ 
  if (cell === 1) {
    cellColor = 'red'
  } else if (cell === -1) {
@@ -110,16 +113,18 @@ boardArray.forEach((cell, index) => {
 }
 
 
-function handleClick(event) {
- let i = parseInt(event.target.id)
- 
-if (boardArray[i] !== null) {
+function handleClick(evt) {
+let i = parseInt(evt.target.id)
+if (winner !== null || boardArray[i] !== null) {
   return
+} else {
+  let add = 30
+  while (boardArray[index + add] !== null) {
+    add -= 6
+  }
+  boardArray[index + add] = turn
 }
-if (winner !== null || winner === 'T') {
-  return
-}
-
-
+turn *= -1
+render()
 }
 
