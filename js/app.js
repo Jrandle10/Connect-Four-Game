@@ -34,7 +34,7 @@
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-let winner, turn, T 
+let winner, turn 
 let boardArray = []
 let winningCombos= [
   [0, 1, 2, 3], [41, 40, 39, 38],[7, 8, 9, 10], 
@@ -86,7 +86,7 @@ init()
 function init() {
   turn = 1
   gameMessage.textContent = `Player one your turn!`
-  boardArray = [1, null, null, -1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+  boardArray = [1, null, null, -1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, null, null, null, null, null, null, null, null, null, null]
   
   winner = null
   
@@ -96,20 +96,15 @@ function init() {
 
 
 function render() {
-boardArray.forEach((cell, index) => {
- let cellColor
- 
- if (cell === 1) {
-   cellColor = 'red'
- } else if (cell === -1) {
-   cellColor = 'blue'
- } else if (cell === null) {
-   cellColor = 'gray'
- }
-//  individualSquares[index].style.backgroundColor = cellColor
-});
-  
-    
+for (let i = 0; i < boardArray.length; i++) {
+  if (boardArray[i] === 1) {
+    individualSquares[i].style.background = 'red'
+  } else if (boardArray[i] === -1) {
+    individualSquares[i].style.background = 'blue'
+  } else if (boardArray[i] !== 1 || boardArray[i] !== -1) {
+    // individualSquares[i].style.background = 'grey'
+  } 
+}
 }
 
 
@@ -120,7 +115,7 @@ if (winner !== null || boardArray[i] !== null) {
 } else {
   let add = 30
   while (boardArray[index + add] !== null) {
-    add -= 6
+    add -= 12
   }
   boardArray[index + add] = turn
 }
@@ -128,3 +123,14 @@ turn *= -1
 render()
 }
 
+function gameInfo() {
+if (winner === 'T') {
+  gameMessage.textContent = 'Tie Game!'
+} else if (winner !== null) {
+  gameMessage.textContent = `${turn === 1 ? 'red' : 'blue'} is the winner!`
+} else {
+  gameMessage.textContent = `You're up ${turn === 1 ? 'red' : 'blue'}`
+}
+}
+
+console.log(gameInfo())
