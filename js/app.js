@@ -86,7 +86,7 @@ init()
 function init() {
   turn = 1
   gameMessage.textContent = `Player one your turn!`
-  boardArray = [1, null, null, -1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, null, null, null, null, null, null, null, null, null, null]
+  boardArray = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
   
   winner = null
   
@@ -109,28 +109,31 @@ for (let i = 0; i < boardArray.length; i++) {
 
 
 function handleClick(evt) {
-let i = parseInt(evt.target.id)
-if (winner !== null || boardArray[i] !== null) {
-  return
-} else {
-  let add = 30
-  while (boardArray[index + add] !== null) {
-    add -= 12
+  let i = parseInt(evt.target.id)
+  if (winner !== null || boardArray[i] !== null) {
+    return
+  } else {
+    let add = 30
+    while (boardArray[index + add] !== null) {
+      add -= 12
+    }
+    boardArray[index + add] = turn
   }
-  boardArray[index + add] = turn
-}
 turn *= -1
 render()
 }
 
 function gameInfo() {
-if (winner === 'T') {
-  gameMessage.textContent = 'Tie Game!'
-} else if (winner !== null) {
-  gameMessage.textContent = `${turn === 1 ? 'red' : 'blue'} is the winner!`
-} else {
-  gameMessage.textContent = `You're up ${turn === 1 ? 'red' : 'blue'}`
-}
+  if (winner === 'T') {
+    gameMessage.textContent = 'Tie Game!'
+  } else if (winner !== null) {
+    gameMessage.textContent = `${turn === 1 ? 'Player one' : 'Player Two'} is the winner!`
+  } else {
+    gameMessage.textContent = `You're up ${turn === 1 ? 'Player one' : 'Player Two'}`
+  }
+
 }
 
-console.log(gameInfo())
+function getWinner() {
+  
+}
