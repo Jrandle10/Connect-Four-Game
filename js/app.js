@@ -86,7 +86,7 @@ init()
 function init() {
   turn = 1
   gameMessage.textContent = `Player one your turn!`
-  boardArray = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+  boardArray = [null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
   
   winner = null
   
@@ -135,5 +135,22 @@ function gameInfo() {
 }
 
 function getWinner() {
-  
+  for (let i = 0; i < winningCombos.length; i++) {
+    let total = 0
+    let combo = winningCombos[i]
+    for (let i = 0; i < combo.length; i++) {
+      total += boardArray[combo[i]]
+    }
+    let winValue = Math.abs(total)
+    if (winValue === 4) {
+      winner = boardArray[combo[i]]
+      return winner
+    } else if(winValue !== 4) {
+      if (boardArray.includes(null) === false){
+        winner = 'T'
+      }
+      gameInfo()
+    }
+  }
+    
 }
