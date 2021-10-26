@@ -71,7 +71,9 @@ const gameBoard = document.querySelector('.game-board')
 const gameMessage = document.querySelector('.game-message')
 
 const individualSquares = document.querySelectorAll('.board-child')
-console.log(individualSquares.length)
+
+const resetBtn = document.querySelector('#reset')
+console.log(resetBtn)
 
 
 
@@ -79,7 +81,7 @@ console.log(individualSquares.length)
 
 /*----------------------------- Event Listeners -----------------------------*/
 individualSquares.forEach(square => square.addEventListener('click', handleClick))
-
+resetBtn.addEventListener('click', init)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -133,32 +135,19 @@ function handleClick(evt) {
 
 function gameInfo() {
   if (winner !== null) {
-    gameMessage.textContent = `${turn === 1 ? 'Home' : 'Away'} is the winner!` 
+    gameMessage.textContent = `${turn === -1 ? 'Home' : 'Away'} is the winner!` 
   } else if (winner === 'T') {
     gameMessage.textContent = `It's a tie!`
   } else {
-    gameMessage.textContent = ` ${turn === 1 ? 'Home' : 'Away'} has the ball`
+    gameMessage.textContent = ` Current turn: ${turn === 1 ? 'Home' : 'Away'} `
   }
 }
 
 function getWinner() {
-  for (let i = 0; i < winningCombos.length; i++) {
-    let total = 0
-    let combo = winningCombos[i]
-    for (let i = 0; i < combo.length; i++) {
-      total += boardArray[combo[i]]
-    }
-    let winValue = Math.abs(total)
-    if(winValue === 4) {
-     winner = boardArray[combo[i]]
-     return winner
-    } else if (winValue !== 4) {
-      if (boardArray.includes(null) === false) {
-        winner = 'T'
-      }
-      gameMessage()
-    }
-  }
+  winningCombos.forEach((combo) => {
+    if (Math.abs(boardArray[combo[0]] + boardArray[combo[1]] + boardArray[combo[2]] + boardArray[combo[3]]) === 4)
+    winner = true
+  })
 }
     
 
