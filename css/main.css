@@ -16,26 +16,12 @@ html {
 
 
 .game-board {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(7, 80px);
+  grid-template-rows: repeat(6, 80px);
+  width: 590px;
+  height: 500px;
+  margin: 0 auto;
   justify-content: center;
-  
-  
-
-}
-
-.board-child {
-  border-radius: 50%;
-  height: 70px;
-  width: 40px;
-}
-
-h1 {
-  text-align: center;
-}
-
-h2 {
-  text-align: center;
+  border-radius: 20px;
 }

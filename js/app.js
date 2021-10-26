@@ -86,7 +86,7 @@ init()
 function init() {
   turn = 1
   gameMessage.textContent = `Player one your turn!`
-  boardArray = [null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+  boardArray = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
   console.log(boardArray.length)
   winner = null
   
@@ -100,7 +100,7 @@ for (let i = 0; i < boardArray.length; i++) {
   if (boardArray[i] === 1) {
     individualSquares[i].style.background = 'red'
   } else if (boardArray[i] === -1) {
-    individualSquares[i].style.background = 'blue'
+    individualSquares[i].style.background = 'black'
   } else {
     individualSquares[i].style.background = 'grey'
   } 
@@ -110,18 +110,18 @@ for (let i = 0; i < boardArray.length; i++) {
 
 function handleClick(evt) {
   
-  let i = parseInt(evt.target.id.slice (0, 1))
-  if (winner !== null || boardArray[i] !== null) {
-    return
-  } else {
-    let add = 30
-    while (boardArray[index + add] !== null) {
-      add -= 12
-    }
-    boardArray[index + add] = turn
+  let i = parseInt(evt.target.id)
+  if (!winner && boardArray[i] === null) {
+   if(boardArray[1] === null) {
+     let add = 35
+     while(boardArray[i + add] !== null) {
+       add -= 7
+     }
+     boardArray[i + add] = turn
+   }
+   turn *= -1
+   render()
   }
-turn *= -1
-render()
 }
 
 function gameInfo() {
