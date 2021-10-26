@@ -69,7 +69,7 @@ const gameBoard = document.querySelector('.game-board')
 const gameMessage = document.querySelector('.game-message')
 
 const individualSquares = document.querySelectorAll('.board-child')
-console.log(individualSquares)
+console.log(individualSquares.length)
 
 
 
@@ -87,7 +87,7 @@ function init() {
   turn = 1
   gameMessage.textContent = `Player one your turn!`
   boardArray = [null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-  
+  console.log(boardArray.length)
   winner = null
   
   render()
@@ -101,15 +101,16 @@ for (let i = 0; i < boardArray.length; i++) {
     individualSquares[i].style.background = 'red'
   } else if (boardArray[i] === -1) {
     individualSquares[i].style.background = 'blue'
-  } else if (boardArray[i] !== 1 || boardArray[i] !== -1) {
-    // individualSquares[i].style.background = 'grey'
+  } else {
+    individualSquares[i].style.background = 'grey'
   } 
 }
 }
 
 
 function handleClick(evt) {
-  let i = parseInt(evt.target.id)
+  
+  let i = parseInt(evt.target.id.slice (0, 1))
   if (winner !== null || boardArray[i] !== null) {
     return
   } else {
@@ -131,7 +132,7 @@ function gameInfo() {
   } else {
     gameMessage.textContent = `You're up ${turn === 1 ? 'Player one' : 'Player Two'}`
   }
-
+  
 }
 
 function getWinner() {
