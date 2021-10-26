@@ -36,6 +36,7 @@
 /*---------------------------- Variables (state) ----------------------------*/
 let winner, turn 
 let boardArray = []
+
 let winningCombos= [
   [0, 1, 2, 3], [41, 40, 39, 38],[7, 8, 9, 10], 
 [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24], 
@@ -63,6 +64,7 @@ let winningCombos= [
 ]
 
 
+
 /*------------------------ Cached Element References ------------------------*/
 const gameBoard = document.querySelector('.game-board')
 
@@ -84,11 +86,13 @@ init()
 
 
 function init() {
+  winner = null
   turn = 1
-  gameMessage.textContent = `Player one your turn!`
+  gameMessage.textContent = `Home starts the game!`
+
   boardArray = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
   console.log(boardArray.length)
-  winner = null
+  
   
   render()
 }
@@ -105,6 +109,8 @@ for (let i = 0; i < boardArray.length; i++) {
     individualSquares[i].style.background = 'grey'
   } 
 }
+getWinner()
+gameInfo()
 }
 
 
@@ -120,19 +126,19 @@ function handleClick(evt) {
      boardArray[i + add] = turn
    }
    turn *= -1
+   
+   }
    render()
-  }
 }
 
 function gameInfo() {
-  if (winner === 'T') {
-    gameMessage.textContent = 'Tie Game!'
-  } else if (winner !== null) {
-    gameMessage.textContent = `${turn === 1 ? 'Player one' : 'Player Two'} is the winner!`
+  if (winner !== null) {
+    gameMessage.textContent = `${turn === 1 ? 'Home' : 'Away'} is the winner!` 
+  } else if (winner === 'T') {
+    gameMessage.textContent = `It's a tie!`
   } else {
-    gameMessage.textContent = `You're up ${turn === 1 ? 'Player one' : 'Player Two'}`
+    gameMessage.textContent = ` ${turn === 1 ? 'Home' : 'Away'} has the ball`
   }
-  
 }
 
 function getWinner() {
@@ -143,15 +149,17 @@ function getWinner() {
       total += boardArray[combo[i]]
     }
     let winValue = Math.abs(total)
-    if (winValue === 4) {
-      winner = boardArray[combo[i]]
-      return winner
-    } else if(winValue !== 4) {
-      if (boardArray.includes(null) === false){
+    if(winValue === 4) {
+     winner = boardArray[combo[i]]
+     return winner
+    } else if (winValue !== 4) {
+      if (boardArray.includes(null) === false) {
         winner = 'T'
       }
-      gameInfo()
+      gameMessage()
     }
   }
-    
 }
+    
+
+
