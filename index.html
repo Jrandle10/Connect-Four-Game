@@ -11,17 +11,12 @@
   <script defer src="js/app.js"></script>
 </head>
 <body>
-  <h1>4 The Kerr Way!</h1>
+  <h1>Four The Kerr Way!</h1>
   <h2>Home Starts the game!</h2>
   <h3 class="game-message"></h3>
-  <button style="display: block; margin: 0 auto;" type="button" class="btn btn-primary" id="reset">Reset</button>
-  
-  <div class="light-switch-container">
-    <input type="checkbox" id="light-switch">
-    <label for="light-switch" class="color-swap">
-      <div class="toggle"></div>
-    </label>
-    
+  <div id="buttons">
+    <button  type="button" class="btn btn-danger" id="reset">Reset</button>
+    <button class="btn btn-danger" id="dark-mode" onclick="toggleLightMode()">Dark Mode</button>
   </div>
   
   <section class="game-board">

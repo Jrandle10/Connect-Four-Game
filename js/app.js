@@ -75,6 +75,9 @@ const individualSquares = document.querySelectorAll('.board-child')
 const resetBtn = document.querySelector('#reset')
 console.log(resetBtn)
 
+ 
+
+
 
 
 
@@ -82,7 +85,7 @@ console.log(resetBtn)
 /*----------------------------- Event Listeners -----------------------------*/
 individualSquares.forEach(square => square.addEventListener('click', handleClick))
 resetBtn.addEventListener('click', init)
-const lightSwitch = document.
+
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -94,7 +97,7 @@ function init() {
   gameMessage.textContent = `Home starts the game!`
 
   boardArray = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-  console.log(boardArray.length)
+  
   
   
   render()
@@ -107,9 +110,9 @@ for (let i = 0; i < boardArray.length; i++) {
   if (boardArray[i] === 1) {
     individualSquares[i].style.background = 'yellow'
   } else if (boardArray[i] === -1) {
-    individualSquares[i].style.background = 'white'
-  } else {
     individualSquares[i].style.background = 'black'
+  } else {
+    individualSquares[i].style.background = 'white'
   } 
 }
 getWinner()
@@ -151,20 +154,10 @@ function getWinner() {
   })
 }
 
-function nightModeOn() {
-  document.body.classList.add('dark-mode')
-}
+function toggleLightMode() {
+  let element = document.body
+  element.classList.toggle('dark-mode')
 
-function nightModeOff() {
-  document.body.classList.remove('dark-mode')
-}
-
-function checkNightMode() {
-  if(lightSwitch.checked) {
-    nightModeOn
-  } else {
-    nightModeOff
-  }
 }
     
 

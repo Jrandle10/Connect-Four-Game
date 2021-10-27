@@ -13,10 +13,15 @@ html {
   box-sizing: inherit;
 }
 
+
+
 body {
-  background-color: black;
+  background-color: white;
+  min-height: 100vh;
   
 }
+
+
 
 h1 {
 color: red;
@@ -24,7 +29,7 @@ text-align: center;
 }
 
 h2 {
-  color: white;
+  color: black;
   text-align: center;
 }
 
@@ -33,7 +38,12 @@ h3 {
   text-align: center;
 }
 
-.btn-button-primary {
+#buttons {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  width: 50%;
+  margin: 5px 25%;
   
 }
 
@@ -61,4 +71,33 @@ h3 {
   width: 3.7em;
   height: 3.7em;
   
+}
+
+.dark-mode {
+  background-color: black;
+}
+
+.dark-mode .game-board {
+  background-color: red;
+}
+
+.dark-mode > h2 {
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 768px) {
+  .card{
+    width: 325px;
+    margin: 30px 15px 0;
+  }
 }
