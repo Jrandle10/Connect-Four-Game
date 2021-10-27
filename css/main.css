@@ -26,16 +26,19 @@ body {
 h1 {
 color: red;
 text-align: center;
+font-family: "irish Grover"
 }
 
 h2 {
   color: black;
   text-align: center;
+  font-family: "irish Grover"
 }
 
 h3 {
   color: red;
   text-align: center;
+  font-family: "irish Grover"
 }
 
 #buttons {

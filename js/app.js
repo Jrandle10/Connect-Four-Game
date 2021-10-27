@@ -108,7 +108,7 @@ function init() {
 function render() {
 for (let i = 0; i < boardArray.length; i++) {
   if (boardArray[i] === 1) {
-    individualSquares[i].style.background = 'yellow'
+    individualSquares[i].style.background = 'gray'
   } else if (boardArray[i] === -1) {
     individualSquares[i].style.background = 'black'
   } else {
