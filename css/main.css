@@ -17,6 +17,7 @@ html {
 
 .game-board {
   display: grid;
+  margin-top: 25px;
   grid-template-columns: repeat(7, 80px);
   grid-template-rows: repeat(6, 80px);
   width: 590px;
@@ -24,4 +25,15 @@ html {
   margin: 0 auto;
   justify-content: center;
   border-radius: 20px;
+}
+
+.board-child {
+  border-radius: 50%;
+  align-items: center;
+  box-shadow: 10px 10px 5px gray;
+  background-color: yellow;
+  width: 3.7em;
+  height: 3.7em;
+  
+
 }
