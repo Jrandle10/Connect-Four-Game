@@ -82,6 +82,7 @@ console.log(resetBtn)
 /*----------------------------- Event Listeners -----------------------------*/
 individualSquares.forEach(square => square.addEventListener('click', handleClick))
 resetBtn.addEventListener('click', init)
+const lightSwitch = document.
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -104,11 +105,11 @@ function init() {
 function render() {
 for (let i = 0; i < boardArray.length; i++) {
   if (boardArray[i] === 1) {
-    individualSquares[i].style.background = 'red'
+    individualSquares[i].style.background = 'yellow'
   } else if (boardArray[i] === -1) {
-    individualSquares[i].style.background = 'black'
+    individualSquares[i].style.background = 'white'
   } else {
-    individualSquares[i].style.background = 'grey'
+    individualSquares[i].style.background = 'black'
   } 
 }
 getWinner()
@@ -139,7 +140,7 @@ function gameInfo() {
   } else if (winner === 'T') {
     gameMessage.textContent = `It's a tie!`
   } else {
-    gameMessage.textContent = ` Current turn: ${turn === 1 ? 'Home' : 'Away'} `
+    gameMessage.textContent = ` Player Turn: ${turn === 1 ? 'Home' : 'Away'} `
   }
 }
 
@@ -148,6 +149,22 @@ function getWinner() {
     if (Math.abs(boardArray[combo[0]] + boardArray[combo[1]] + boardArray[combo[2]] + boardArray[combo[3]]) === 4)
     winner = true
   })
+}
+
+function nightModeOn() {
+  document.body.classList.add('dark-mode')
+}
+
+function nightModeOff() {
+  document.body.classList.remove('dark-mode')
+}
+
+function checkNightMode() {
+  if(lightSwitch.checked) {
+    nightModeOn
+  } else {
+    nightModeOff
+  }
 }
     
 
