@@ -46,7 +46,7 @@ h3 {
   justify-content: center;
   justify-content: space-around;
   width: 50%;
-  margin: 5px 25%;
+  margin: 5px 25% 10px;
   
 }
 
@@ -57,8 +57,8 @@ h3 {
   margin-top: 25px;
   grid-template-columns: repeat(7, 80px);
   grid-template-rows: repeat(6, 80px);
-  width: 590px;
-  height: 500px;
+  width: 560px;
+  height: 510px;
   margin: 0 auto;
   justify-content: center;
   align-content: center;
@@ -67,14 +67,19 @@ h3 {
 }
 
 .board-child {
+  
+  align-self: center;
+  margin-left: 10px;
   border-radius: 50%;
-  align-items: center;
+  
   /* box-shadow: 10px 10px 5px rgb(53, 240, 53); */
   background-color: yellow;
   width: 3.7em;
   height: 3.7em;
   
 }
+
+
 
 .dark-mode {
   background-color: black;
@@ -89,18 +94,29 @@ h3 {
 }
 
 
-
-
-
-
-
-
-
-
-
 @media only screen and (min-width: 768px) {
   .card{
     width: 325px;
     margin: 30px 15px 0;
+  }
+}
+
+@media only screen and (max-width: 390px ) {
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(7, 50px);
+    grid-template-rows: repeat(6, 50px);
+    width: 350px;
+    height: 300px;
+  }
+
+  .board-child {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  #buttons {
+    display: flex;
+    justify-content: space-around;
   }
 }
